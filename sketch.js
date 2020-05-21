@@ -1,10 +1,6 @@
-var season = "summer";
+var season = "spring";
 var flowerx = [];
 var flowery = [];
-//var colo = get(130, 130);
-//var arrt = [0, 1, 2, 3];
-//var arr = [0, 1];
-//var flowerind = 0;
 
 function setup() {
     createCanvas(800, 800);
@@ -19,8 +15,6 @@ function draw() {
     if (season == "spring") {
         spring();
     }
-    //console.log(get(130, 130));
-    //console.log(arr);
 }
 
 function circ(x, y) {
@@ -38,15 +32,12 @@ function summer() {
     fill('yellow');
     ellipse(130, 130, 75, 75);
     //flowers
-    for(i=0; i<60; i++) {
+    for(i=0; i<80; i++) {
         flowerx.push(random(0, 800));
         flowery.push(random(500, 800));
-        //colo =get(130, 130) === (4) [255, 255, 0, 255]
-        //if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
+        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
             ellipse(flowerx[i], flowery[i], 6, 6);
-        //} else {
-            //i--;
-        //}
+        }
     }
     //trunk
     stroke('saddlebrown');
@@ -82,6 +73,14 @@ function spring() {
     stroke('saddlebrown');
     strokeWeight(14);
     line(135, 540, 135, 630);
+    strokeWeight(11);
+    line(135, 540, 99, 452);
+    line(135, 540, 154, 495);
+    strokeWeight(9);
+    line(99, 452, 61, 426);
+    line(99, 452, 111, 387);
+    line(154, 495, 157, 459);
+    line(154, 495, 212, 472);
     noStroke();
 }
 
