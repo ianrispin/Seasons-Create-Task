@@ -1,4 +1,4 @@
-var season = "fall";
+var season = "winter";
 
 var flowerx = [];
 var flowery = [];
@@ -85,7 +85,7 @@ function summer() {
 
 function spring() {
     //sky
-    background("skyblue");
+    background('skyblue');
     //hills
     fill('forestgreen');
     ellipse(200, 850, 700, 600);
@@ -98,7 +98,7 @@ function spring() {
     ellipse(600, 585, 222, 45);
     //trunk
     stroke('saddlebrown');
-    strokeWeight(14);//14, 8.4, 5.04, 3.024
+    strokeWeight(14);
     line(135, 515, 135, 605);
     strokeWeight(8.5);
     line(135, 515, 99, 427);
@@ -118,7 +118,7 @@ function spring() {
     line(212, 447, 225, 420);
     line(212, 447, 250, 445);
     noStroke();
-//    blossoms
+    //blossoms
     for(i=0; i<1000; i++) {
         blossomx.push(random(15, 265));
         blossomy.push(random(300, 500));
@@ -131,7 +131,7 @@ function spring() {
 
 function fall() {
     //sky
-    background("skyblue");
+    background('skyblue');
     //hills
     fill('forestgreen');
     ellipse(200, 850, 700, 600);
@@ -144,7 +144,7 @@ function fall() {
     ellipse(600, 585, 222, 45);
     //trunk
     stroke('saddlebrown');
-    strokeWeight(14);//14, 8.4, 5.04, 3.024
+    strokeWeight(14);
     line(135, 515, 135, 605);
     strokeWeight(8.5);
     line(135, 515, 99, 427);
@@ -177,20 +177,20 @@ function fall() {
 
 function winter() {
     //sky
-    background("skyblue");
+    background('darkgrey');
     //hills
-    fill('forestgreen');
+    fill('snow');
     ellipse(200, 850, 700, 600);
     ellipse(600, 800, 700, 600);
     //sun
     fill('yellow');
     ellipse(130, 130, 75, 75);
     //lake
-    fill('aqua');
+    fill('paleturquoise');
     ellipse(600, 585, 222, 45);
     //trunk
-    stroke('saddlebrown');
-    strokeWeight(14);//14, 8.4, 5.04, 3.024
+    stroke('rgba(245, 245, 245, 0.5)');
+    strokeWeight(14);
     line(135, 515, 135, 605);
     strokeWeight(8.5);
     line(135, 515, 99, 427);
