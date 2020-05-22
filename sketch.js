@@ -1,4 +1,5 @@
 var season = "winter";
+var radio;
 
 var flowerx = [];
 var flowery = [];
@@ -17,6 +18,12 @@ var leafsize = [];
 
 function setup() {
     createCanvas(800, 800);
+    radio = createRadio();
+    radio.option('spring');
+    radio.option('summer');
+    radio.option('fall');
+    radio.option('winter');
+    //radio.value() = 'spring';
     noStroke();
 }
 
