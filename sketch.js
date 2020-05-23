@@ -19,7 +19,7 @@ var leafsize = [];
 function setup() {
     createCanvas(800, 800);
     select = createSelect();
-    select.position(0, 800);
+    select.position(5, 805);
     select.option('spring');
     select.option('summer');
     select.option('fall');
