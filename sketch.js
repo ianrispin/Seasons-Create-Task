@@ -1,5 +1,5 @@
 var season = "winter";
-var radio;
+var select;
 
 var flowerx = [];
 var flowery = [];
@@ -18,36 +18,32 @@ var leafsize = [];
 
 function setup() {
     createCanvas(800, 800);
-    radio = createRadio();
-    radio.position(0, 800);
-    radio.option('spring');
-    radio.option('summer');
-    radio.option('fall');
-    radio.option('winter');
-    radio.value('spring');
+    select = createSelect();
+    select.position(0, 800);
+    select.option('spring');
+    select.option('summer');
+    select.option('fall');
+    select.option('winter');
+    select.changed(reset);
     noStroke();
 }
 
 function draw() {
-    if (radio.value() == 'summer') {
+    if (select.value() == 'summer') {
         summer();
     }
     
-    if (radio.value() == 'spring') {
+    if (select.value() == 'spring') {
         spring();
     }
     
-    if (radio.value() == 'fall') {
+    if (select.value() == 'fall') {
         fall();
     }
     
-    if (radio.value() == 'winter') {
+    if (select.value() == 'winter') {
         winter();
     }
-}
-
-function circ(x, y) {
-    ellipse(x, y, 50, 50)
 }
 
 function summer() {
@@ -106,26 +102,7 @@ function spring() {
     ellipse(600, 585, 222, 45);
     //trunk
     stroke('saddlebrown');
-    strokeWeight(14);
-    line(135, 515, 135, 605);
-    strokeWeight(8.5);
-    line(135, 515, 99, 427);
-    line(135, 515, 154, 470);
-    strokeWeight(5.3);
-    line(99, 427, 61, 401);
-    line(99, 427, 111, 362);
-    line(154, 470, 170, 380);
-    line(154, 470, 212, 447);
-    strokeWeight(3.2);
-    line(61, 401, 30, 400);
-    line(61, 401, 50, 375);
-    line(111, 362, 99, 318);
-    line(111, 362, 128, 330);
-    line(170, 380, 150, 354);
-    line(170, 380, 187, 365);
-    line(212, 447, 225, 420);
-    line(212, 447, 250, 445);
-    noStroke();
+    branches();
     //blossoms
     for(i=0; i<1000; i++) {
         blossomx.push(random(15, 265));
@@ -152,26 +129,7 @@ function fall() {
     ellipse(600, 585, 222, 45);
     //trunk
     stroke('saddlebrown');
-    strokeWeight(14);
-    line(135, 515, 135, 605);
-    strokeWeight(8.5);
-    line(135, 515, 99, 427);
-    line(135, 515, 154, 470);
-    strokeWeight(5.3);
-    line(99, 427, 61, 401);
-    line(99, 427, 111, 362);
-    line(154, 470, 170, 380);
-    line(154, 470, 212, 447);
-    strokeWeight(3.2);
-    line(61, 401, 30, 400);
-    line(61, 401, 50, 375);
-    line(111, 362, 99, 318);
-    line(111, 362, 128, 330);
-    line(170, 380, 150, 354);
-    line(170, 380, 187, 365);
-    line(212, 447, 225, 420);
-    line(212, 447, 250, 445);
-    noStroke();
+    branches();
     //leaves
     for(i=0; i<500; i++) {
         leafx.push(random(15, 265));
@@ -198,6 +156,14 @@ function winter() {
     ellipse(600, 585, 222, 45);
     //trunk
     stroke('rgba(245, 245, 245, 0.5)');
+    branches();
+}
+
+function circ(x, y) {
+    ellipse(x, y, 50, 50)
+}
+
+function branches() {
     strokeWeight(14);
     line(135, 515, 135, 605);
     strokeWeight(8.5);
@@ -218,4 +184,8 @@ function winter() {
     line(212, 447, 225, 420);
     line(212, 447, 250, 445);
     noStroke();
+}
+
+function reset() {
+    
 }
