@@ -19,28 +19,29 @@ var leafsize = [];
 function setup() {
     createCanvas(800, 800);
     radio = createRadio();
+    radio.position(0, 800);
     radio.option('spring');
     radio.option('summer');
     radio.option('fall');
     radio.option('winter');
-    //radio.value() = 'spring';
+    radio.value('spring');
     noStroke();
 }
 
 function draw() {
-    if (season == "summer") {
+    if (radio.value() == 'summer') {
         summer();
     }
     
-    if (season == "spring") {
+    if (radio.value() == 'spring') {
         spring();
     }
     
-    if (season == "fall") {
+    if (radio.value() == 'fall') {
         fall();
     }
     
-    if (season == "winter") {
+    if (radio.value() == 'winter') {
         winter();
     }
 }
