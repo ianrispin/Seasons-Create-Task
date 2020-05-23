@@ -1,5 +1,6 @@
 var season = "winter";
 var select;
+var cnv;
 
 var flowerx = [];
 var flowery = [];
@@ -17,7 +18,7 @@ var leafnums = [];
 var leafsize = [];
 
 function setup() {
-    var cnv = createCanvas(800, 800);
+    cnv = createCanvas(800, 800);
     cnv.position(0, 0);
     select = createSelect();
     select.position(5, 5);
@@ -32,12 +33,12 @@ function setup() {
 }
 
 function draw() {
-    if (select.value() == 'summer') {
-        summer();
-    }
-    
     if (select.value() == 'spring') {
         spring();
+    }
+    
+    if (select.value() == 'summer') {
+        summer();
     }
     
     if (select.value() == 'fall') {
@@ -46,6 +47,33 @@ function draw() {
     
     if (select.value() == 'winter') {
         winter();
+    }
+}
+
+function spring() {
+    //sky
+    background('skyblue');
+    //hills
+    fill('forestgreen');
+    ellipse(200, 850, 700, 600);
+    ellipse(600, 800, 700, 600);
+    //sun
+    fill('yellow');
+    ellipse(130, 130, 75, 75);
+    //lake
+    fill('aqua');
+    ellipse(600, 585, 222, 45);
+    //trunk
+    stroke('saddlebrown');
+    branches();
+    //blossoms
+    for(i=0; i<1000; i++) {
+        blossomx.push(random(15, 265));
+        blossomy.push(random(300, 500));
+        blossomnums.push(Math.floor(Math.random()*5));
+        blossomsize.push(random(0, 10));
+        fill(blossomcolors[blossomnums[i]]);
+        ellipse(blossomx[i], blossomy[i], blossomsize[i], blossomsize[i]);
     }
 }
 
@@ -76,43 +104,16 @@ function summer() {
     //leaves
     fill('darkgreen');
     //fill(get(130, 130)); y-25
-    circ(100, 525);
-    circ(130, 510);
-    circ(85, 495);
-    circ(110, 455);
-    circ(110, 485);
-    circ(150, 455);
-    circ(175, 475);
-    circ(160, 500);
-    circ(165, 520);
-    circ(139, 482);
-}
-
-function spring() {
-    //sky
-    background('skyblue');
-    //hills
-    fill('forestgreen');
-    ellipse(200, 850, 700, 600);
-    ellipse(600, 800, 700, 600);
-    //sun
-    fill('yellow');
-    ellipse(130, 130, 75, 75);
-    //lake
-    fill('aqua');
-    ellipse(600, 585, 222, 45);
-    //trunk
-    stroke('saddlebrown');
-    branches();
-    //blossoms
-    for(i=0; i<1000; i++) {
-        blossomx.push(random(15, 265));
-        blossomy.push(random(300, 500));
-        blossomnums.push(Math.floor(Math.random()*5));
-        blossomsize.push(random(0, 10));
-        fill(blossomcolors[blossomnums[i]]);
-        ellipse(blossomx[i], blossomy[i], blossomsize[i], blossomsize[i]);
-    }
+//    circ(100, 525);
+//    circ(130, 510);
+//    circ(85, 495);
+//    circ(110, 455);
+//    circ(110, 485);
+//    circ(150, 455);
+//    circ(175, 475);
+//    circ(160, 500);
+//    circ(165, 520);
+//    circ(139, 482);
 }
 
 function fall() {
