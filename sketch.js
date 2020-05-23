@@ -17,14 +17,17 @@ var leafnums = [];
 var leafsize = [];
 
 function setup() {
-    createCanvas(800, 800);
+    var cnv = createCanvas(800, 800);
+    cnv.position(0, 0);
     select = createSelect();
-    select.position(5, 805);
+    select.position(5, 5);
     select.option('spring');
     select.option('summer');
     select.option('fall');
     select.option('winter');
     select.changed(reset);
+    select.style('font-size', '15px');
+    select.style('cursor', 'pointer');
     noStroke();
 }
 
@@ -57,7 +60,7 @@ function summer() {
     fill('yellow');
     ellipse(130, 130, 75, 75);
     //flowers
-    for(i=0; i<80; i++) {
+    for(i=0; i<100; i++) {
         flowerx.push(random(0, 800));
         flowery.push(random(500, 800));
         if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
@@ -69,9 +72,7 @@ function summer() {
     ellipse(600, 585, 222, 45);
     //trunk
     stroke('saddlebrown');
-    strokeWeight(14);
-    line(135, 515, 135, 605);
-    noStroke();
+    branches();
     //leaves
     fill('darkgreen');
     //fill(get(130, 130)); y-25
@@ -159,9 +160,9 @@ function winter() {
     branches();
 }
 
-function circ(x, y) {
-    ellipse(x, y, 50, 50)
-}
+//function leaves(season) {
+//    ellipse(x, y, 50, 50)
+//}
 
 function branches() {
     strokeWeight(14);
@@ -187,5 +188,14 @@ function branches() {
 }
 
 function reset() {
-    
+    flowerx = [];
+    flowery = [];
+    blossomx = [];
+    blossomy = [];
+    blossomnums = [];
+    blossomsize = [];
+    leafx = [];
+    leafy = [];
+    leafnums = [];
+    leafsize = [];
 }
