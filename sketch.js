@@ -1,6 +1,7 @@
 var select;
 var cnv;
 var duck;
+var duckvel = -.75;
 
 var flowerx = [];
 var flowery = [];
@@ -18,10 +19,11 @@ function setup() {
     cnv = createCanvas(800, 800);
     cnv.position(0, 0);
     
-    duck = createSprite(600, 580);
-    duck.scale = 0.1;
+    duck = createSprite(675, 561);
+    duck.scale = 0.15;
     
-    //duck.
+    duck.addAnimation('left', 'the-duck-left.png');
+    duck.addAnimation('right', 'the-duck-right.png');
     
     select = createSelect();
     select.position(5, 5);
@@ -72,6 +74,9 @@ function spring() {
     branches();
     //blossoms
     leaves(blossomcolors, 1000);
+    //duck
+    drawSprites();
+    moveDuck();
 }
 
 function summer() {
@@ -85,13 +90,13 @@ function summer() {
     fill('yellow');
     ellipse(130, 130, 75, 75);
     //flowers
-    for(i=0; i<100; i++) {
-        flowerx.push(random(0, 800));
-        flowery.push(random(500, 800));
-        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
-            ellipse(flowerx[i], flowery[i], 6, 6);
-        }
-    }
+//    for(i=0; i<100; i++) {
+//        flowerx.push(random(0, 800));
+//        flowery.push(random(500, 800));
+//        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
+//            ellipse(flowerx[i], flowery[i], 6, 6);
+//        }
+//    }
     //lake
     fill('aqua');
     ellipse(600, 585, 222, 45);
@@ -99,7 +104,10 @@ function summer() {
     stroke('saddlebrown');
     branches();
     //leaves
-    leaves(leafcolors, 1500);
+    leaves(leafcolors, 1000);
+    //duck
+    drawSprites();
+    moveDuck();
 }
 
 function fall() {
@@ -119,7 +127,10 @@ function fall() {
     stroke('saddlebrown');
     branches();
     //leaves
-    leaves(dleafcolors, 500);
+    leaves(dleafcolors, 1000);
+    //duck
+    drawSprites();
+    moveDuck();
 }
 
 function winter() {
@@ -174,18 +185,20 @@ function leaves(colors, num) {
     }
 }
 
+function moveDuck() {
+    duck.velocity.x = duckvel;
+    if (duck.position.x < 535) {
+        duck.changeAnimation('right');
+        duckvel =  .75;
+    } else if (duck.position.x > 675) {
+        duck.changeAnimation('left');
+        duckvel =  -.75;
+    }
+}
+
 function reset() {
-    blossomx = [];
-    blossomy = [];
-    blossomnums = [];
-    blossomsize = [];
     flowerx = [];
     flowery = [];
-    leafx = [];
-    leafy = [];
-    leafnums = [];
-    leafsize = [];
-    
     x = [];
     y = [];
     colornums = [];
