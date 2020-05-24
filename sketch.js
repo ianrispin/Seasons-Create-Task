@@ -1,5 +1,6 @@
 var select;
 var cnv;
+var duck;
 
 var flowerx = [];
 var flowery = [];
@@ -16,6 +17,12 @@ var size = [];
 function setup() {
     cnv = createCanvas(800, 800);
     cnv.position(0, 0);
+    
+    duck = createSprite(600, 580);
+    duck.scale = 0.1;
+    
+    //duck.
+    
     select = createSelect();
     select.position(5, 5);
     select.option('spring');
