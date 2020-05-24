@@ -1,25 +1,12 @@
 var select;
 var cnv;
 
-var blossomx = [];
-var blossomy = [];
-var blossomcolors = ['deeppink', 'hotpink', 'lightpink', 'orchid', 'pink', 'violet'];
-var blossomnums = [];
-var blossomsize = [];
-
 var flowerx = [];
 var flowery = [];
-var leafx = [];
-var leafy = [];
-var leafcolors = ['green', 'darkgreen', 'limegreen', 'springgreen', 'lightgreen', 'palegreen'];
-var leafnums = [];
-var leafsize = [];
 
-var dleafx = [];
-var dleafy = [];
+var blossomcolors = ['deeppink', 'hotpink', 'lightpink', 'orchid', 'pink', 'violet'];
+var leafcolors = ['green', 'darkgreen', 'limegreen', 'springgreen', 'lightgreen', 'palegreen'];
 var dleafcolors = ['chocolate', 'brown', 'crimson', 'darkorange', 'orangered', 'orange'];
-var dleafnums = [];
-var dleafsize = [];
 
 var x = [];
 var y = [];
