@@ -11,15 +11,20 @@ var flowerx = [];
 var flowery = [];
 var leafx = [];
 var leafy = [];
-var leafcolors = ['green', 'darkgreen', 'limegreen'];
+var leafcolors = ['green', 'darkgreen', 'limegreen', 'springgreen', 'lightgreen', 'palegreen'];
 var leafnums = [];
 var leafsize = [];
 
 var dleafx = [];
 var dleafy = [];
-var dleafcolors = ['chocolate', 'brown', 'crimson', 'darkorange', 'firebrick', 'orangered', 'orange'];
+var dleafcolors = ['chocolate', 'brown', 'crimson', 'darkorange', 'orangered', 'orange'];
 var dleafnums = [];
 var dleafsize = [];
+
+var x = [];
+var y = [];
+var colornums = [];
+var size = [];
 
 function setup() {
     cnv = createCanvas(800, 800);
@@ -33,6 +38,7 @@ function setup() {
     select.changed(reset);
     select.style('font-size', '15px');
     select.style('cursor', 'pointer');
+    //select.style('text-align', 'right');
     noStroke();
 }
 
@@ -71,14 +77,7 @@ function spring() {
     stroke('saddlebrown');
     branches();
     //blossoms
-    for(i=0; i<1000; i++) {
-        blossomx.push(random(15, 265));
-        blossomy.push(random(300, 500));
-        blossomnums.push(Math.floor(Math.random()*6));
-        blossomsize.push(random(0, 10));
-        fill(blossomcolors[blossomnums[i]]);
-        ellipse(blossomx[i], blossomy[i], blossomsize[i], blossomsize[i]);
-    }
+    leaves(blossomcolors, 1000);
 }
 
 function summer() {
@@ -106,14 +105,7 @@ function summer() {
     stroke('saddlebrown');
     branches();
     //leaves
-    for(i=0; i<1500; i++) {
-        leafx.push(random(15, 265));
-        leafy.push(random(300, 500));
-        leafnums.push(Math.floor(Math.random()*3));
-        leafsize.push(random(0, 10));
-        fill(leafcolors[leafnums[i]]);
-        ellipse(leafx[i], leafy[i], leafsize[i], leafsize[i]);
-    }
+    leaves(leafcolors, 1500);
 }
 
 function fall() {
@@ -133,14 +125,7 @@ function fall() {
     stroke('saddlebrown');
     branches();
     //leaves
-    for(i=0; i<500; i++) {
-        dleafx.push(random(15, 265));
-        dleafy.push(random(300, 500));
-        dleafnums.push(Math.floor(Math.random()*7));
-        dleafsize.push(random(0, 10));
-        fill(dleafcolors[dleafnums[i]]);
-        ellipse(dleafx[i], dleafy[i], dleafsize[i], dleafsize[i]);
-    }
+    leaves(dleafcolors, 500);
 }
 
 function winter() {
@@ -184,8 +169,15 @@ function branches() {
     noStroke();
 }
 
-function leaves() {
-    
+function leaves(colors, num) {
+    for(i=0; i<num; i++) {
+        x.push(random(15, 265));
+        y.push(random(300, 500));
+        colornums.push(Math.floor(Math.random()*6));
+        size.push(random(0, 10));
+        fill(colors[colornums[i]]);
+        ellipse(x[i], y[i], size[i], size[i]);
+    }
 }
 
 function reset() {
@@ -199,4 +191,9 @@ function reset() {
     leafy = [];
     leafnums = [];
     leafsize = [];
+    
+    x = [];
+    y = [];
+    colornums = [];
+    size = [];
 }
