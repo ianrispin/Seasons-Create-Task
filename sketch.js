@@ -23,14 +23,14 @@ function setup() {
     
     duck = createSprite(675, 561);
     duck.scale = 0.2;
-    duck.addAnimation('left', 'the-duck-left.png');
+    duck.addAnimation('left', 'the-duck-left.png');//this and the images below are all edited versions of an image from this site: https://cdn3.iconfinder.com/data/icons/birdies/256/duck-512.png
     duck.addAnimation('right', 'the-duck-right.png');
     duck.addAnimation('winter', 'duck-hat.png');
     duck.addAnimation('left-happy', 'the-duck-left-happy.png');
     duck.addAnimation('right-happy', 'the-duck-right-happy.png');
-    duck.addAnimation('winter-happy', 'duck-hat-happy.png');
+    duck.addAnimation('winter-happy', 'duck-hat-happy.png');//the hat is a different image from here: https://freesvg.org/img/bobcap.png
     
-    select = createSelect();
+    select = createSelect();//createSelect() function found on: https://p5js.org/reference/#/p5/createSelect
     select.position(5, 5);
     select.option('spring');
     select.option('summer');
@@ -61,100 +61,72 @@ function draw() {
 }
 
 function spring() {
-    //sky
     background('skyblue');
-    //hills
     fill('forestgreen');
     ellipse(200, 850, 700, 600);
     ellipse(600, 800, 700, 600);
-    //sun
     fill('yellow');
     ellipse(130, 130, 75, 75);
-    //lake
     fill('aqua');
     ellipse(600, 585, 222, 45);
-    //trunk
     stroke('saddlebrown');
     branches();
-    //blossoms
     leaves(blossomcolors, 1000);
-    //duck
     updateDuck();
     drawSprites();
 }
 
 function summer() {
-    //sky
     background('skyblue');
-    //hills
     fill('forestgreen');
     ellipse(200, 850, 700, 600);
     ellipse(600, 800, 700, 600);
-    //sun
     fill('yellow');
     ellipse(130, 130, 75, 75);
-    //flowers
     for(i=0; i<100; i++) {
         flowerx.push(random(0, 800));
         flowery.push(random(500, 800));
-        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
+        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {//get() function found on: https://p5js.org/reference/#/p5/get
             ellipse(flowerx[i], flowery[i], 6, 6);
         }
     }
-    //lake
     fill('aqua');
     ellipse(600, 585, 222, 45);
-    //trunk
     stroke('saddlebrown');
     branches();
-    //leaves
     leaves(leafcolors, 1000);
-    //duck
     updateDuck();
     duck.velocity.x*=1.5;
     drawSprites();
 }
 
 function fall() {
-    //sky
     background('skyblue');
-    //hills
     fill('forestgreen');
     ellipse(200, 850, 700, 600);
     ellipse(600, 800, 700, 600);
-    //sun
     fill('yellow');
     ellipse(130, 130, 75, 75);
-    //lake
     fill('aqua');
     ellipse(600, 585, 222, 45);
-    //trunk
     stroke('saddlebrown');
     branches();
-    //leaves
     leaves(dleafcolors, 1000);
-    //duck
     updateDuck();
     drawSprites();
 }
 
 function winter() {
-    //sky
     background('darkgrey');
-    //hills
     fill('snow');
     ellipse(200, 850, 700, 600);
     ellipse(600, 800, 700, 600);
-    //sun
     fill('yellow');
     ellipse(130, 130, 75, 75);
-    //lake
     fill('paleturquoise');
     ellipse(600, 585, 222, 45);
-    //trunk
     stroke('rgba(245, 245, 245, 0.5)');
     branches();
-    //duck
     updateDuck();
     drawSprites();
 }
@@ -211,8 +183,8 @@ function updateDuck() {
             duckvel =  -.75;
         }
     }
-    if (duck.overlapPoint(mouseX, mouseY) && happy == false) {
-            duck.changeAnimation(duck.getAnimationLabel() + '-happy');
+    if (duck.overlapPoint(mouseX, mouseY) && happy == false) {//overlapPoint() method found on: https://molleindustria.github.io/p5.play/docs/classes/Sprite.html#method-overlapPoint
+            duck.changeAnimation(duck.getAnimationLabel() + '-happy');//getAnimationLabel() method found on: https://molleindustria.github.io/p5.play/docs/classes/Sprite.html#method-getAnimationLabel
         happy = true;
     } else if (duck.overlapPoint(mouseX, mouseY) == false && happy == true) {
         duck.changeAnimation(duck.getAnimationLabel().slice(0, -6));
