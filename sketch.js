@@ -2,6 +2,7 @@ var select;
 var cnv;
 var duck;
 var duckvel = -.75;
+var iswinter = false;
 //var happy = false;
 
 var flowerx = [];
@@ -29,8 +30,8 @@ function setup() {
     duck.addAnimation('left-happy', 'the-duck-left-happy.png');
     duck.addAnimation('right-happy', 'the-duck-right-happy.png');
     duck.addAnimation('winter-happy', 'duck-hat-happy.png');
-//    duck.mouseIsOver(happy);
-//    duck.mouseOut(normal);
+    //duck.mouseOver(happy);
+    //duck.mouseOut(normal);
     
     select = createSelect();
     select.position(5, 5);
@@ -214,8 +215,18 @@ function reset() {
     y = [];
     colornums = [];
     size = [];
+    if (iswinter == true) {
+        duck.changeAnimation('left');
+        duck.position.x = 675;
+        duck.position.y = 561;
+    }
+    if (select.value() == 'winter') {
+        iswinter = true;
+    } else {
+        iswinter = false;
+    }
 }
 
 function happy() {
-    console.log(duck.animation);
+    //console.log("duck.animation");
 }
