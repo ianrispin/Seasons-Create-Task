@@ -3,8 +3,8 @@ var cnv;
 var duck;
 var duckvel = -.75;
 var iswinter = false;
-var testsprite;
-//var happy = false;
+var happy = false;
+var duckani = 'left';
 
 var flowerx = [];
 var flowery = [];
@@ -24,18 +24,12 @@ function setup() {
     
     duck = createSprite(675, 561);
     duck.scale = 0.2;
-    
     duck.addAnimation('left', 'the-duck-left.png');
     duck.addAnimation('right', 'the-duck-right.png');
     duck.addAnimation('winter', 'duck-hat.png');
     duck.addAnimation('left-happy', 'the-duck-left-happy.png');
     duck.addAnimation('right-happy', 'the-duck-right-happy.png');
     duck.addAnimation('winter-happy', 'duck-hat-happy.png');
-    //duck.onmouseenter = function(){happy()};
-    //duck.mouseOver(happy);
-    //duck.mouseOut(normal);
-//    testsprite = createSprite(400, 250);
-//    testsprite.onmouseenter = function(){happy()};
     
     select = createSelect();
     select.position(5, 5);
@@ -65,9 +59,6 @@ function draw() {
     if (select.value() == 'winter') {
         winter();
     }
-    if (duck.mouseIsOver == true) {
-        console.log("true");
-    }
 }
 
 function spring() {
@@ -89,8 +80,8 @@ function spring() {
     //blossoms
     leaves(blossomcolors, 1000);
     //duck
+    updateDuck();
     drawSprites();
-    moveDuck();
 }
 
 function summer() {
@@ -120,8 +111,8 @@ function summer() {
     //leaves
     leaves(leafcolors, 1000);
     //duck
+    updateDuck();
     drawSprites();
-    moveDuck();
 }
 
 function fall() {
@@ -143,8 +134,8 @@ function fall() {
     //leaves
     leaves(dleafcolors, 1000);
     //duck
+    updateDuck();
     drawSprites();
-    moveDuck();
 }
 
 function winter() {
@@ -164,9 +155,7 @@ function winter() {
     stroke('rgba(245, 245, 245, 0.5)');
     branches();
     //duck
-    duck.changeAnimation('winter');
-    duck.position.x = 735;
-    duck.position.y = 590;
+    updateDuck();
     drawSprites();
 }
 
@@ -204,15 +193,47 @@ function leaves(colors, num) {
     }
 }
 
-function moveDuck() {
-    duck.velocity.x = duckvel;
-    if (duck.position.x < 535) {
-        duck.changeAnimation('right');
-        duckvel =  .75;
-    } else if (duck.position.x > 675) {
-        duck.changeAnimation('left');
-        duckvel =  -.75;
+function updateDuck() {
+    if (select.value() == 'winter') {
+//        if (happy == true) {
+//            duck.changeAnimation('winter-happy');
+//        } else {
+        duck.changeAnimation('winter');
+        happy = false;
+//        duckani = 'winter';
+//        }
+        duck.position.x = 735;
+        duck.position.y = 590;
+    } else {
+        duck.velocity.x = duckvel;
+        if (duck.position.x < 535) {
+//            if (happy == true) {
+//                duck.changeAnimation('right-happy');
+//            } else {
+            duck.changeAnimation('right');
+            happy = false;
+//            duckani = 'right';
+//            }
+            duckvel =  .75;
+        } else if (duck.position.x > 675) {
+            duck.changeAnimation('left');
+            happy = false;
+//            duckani = 'left';
+            duckvel =  -.75;
+        }
     }
+    if (duck.overlapPoint(mouseX, mouseY) && happy == false) {
+//        if (duck.getAnimationLabel().slice(-6, -0) != '-happy') {
+            duck.changeAnimation(duck.getAnimationLabel() + '-happy');
+//            console.log("happy");
+//        }
+        //console.log("happy");//duck.mouseIsOver == true
+        happy = true;
+    } else if (duck.overlapPoint(mouseX, mouseY) == false && happy == true) {
+        duck.changeAnimation(duck.getAnimationLabel().slice(0, -6));
+        happy = false;
+    }
+    //duck.changeAnimation(duckani);
 }
 
 function reset() {
@@ -222,6 +243,7 @@ function reset() {
     y = [];
     colornums = [];
     size = [];
+    
     if (iswinter == true) {
         duck.changeAnimation('left');
         duck.position.x = 675;
