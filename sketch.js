@@ -4,7 +4,6 @@ var duck;
 var duckvel = -.75;
 var iswinter = false;
 var happy = false;
-var duckani = 'left';
 
 var flowerx = [];
 var flowery = [];
@@ -95,13 +94,13 @@ function summer() {
     fill('yellow');
     ellipse(130, 130, 75, 75);
     //flowers
-//    for(i=0; i<100; i++) {
-//        flowerx.push(random(0, 800));
-//        flowery.push(random(500, 800));
-//        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
-//            ellipse(flowerx[i], flowery[i], 6, 6);
-//        }
-//    }
+    for(i=0; i<100; i++) {
+        flowerx.push(random(0, 800));
+        flowery.push(random(500, 800));
+        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {
+            ellipse(flowerx[i], flowery[i], 6, 6);
+        }
+    }
     //lake
     fill('aqua');
     ellipse(600, 585, 222, 45);
@@ -112,6 +111,7 @@ function summer() {
     leaves(leafcolors, 1000);
     //duck
     updateDuck();
+    duck.velocity.x*=1.5;
     drawSprites();
 }
 
@@ -207,33 +207,22 @@ function updateDuck() {
     } else {
         duck.velocity.x = duckvel;
         if (duck.position.x < 535) {
-//            if (happy == true) {
-//                duck.changeAnimation('right-happy');
-//            } else {
             duck.changeAnimation('right');
             happy = false;
-//            duckani = 'right';
-//            }
             duckvel =  .75;
         } else if (duck.position.x > 675) {
             duck.changeAnimation('left');
             happy = false;
-//            duckani = 'left';
             duckvel =  -.75;
         }
     }
     if (duck.overlapPoint(mouseX, mouseY) && happy == false) {
-//        if (duck.getAnimationLabel().slice(-6, -0) != '-happy') {
             duck.changeAnimation(duck.getAnimationLabel() + '-happy');
-//            console.log("happy");
-//        }
-        //console.log("happy");//duck.mouseIsOver == true
         happy = true;
     } else if (duck.overlapPoint(mouseX, mouseY) == false && happy == true) {
         duck.changeAnimation(duck.getAnimationLabel().slice(0, -6));
         happy = false;
     }
-    //duck.changeAnimation(duckani);
 }
 
 function reset() {
