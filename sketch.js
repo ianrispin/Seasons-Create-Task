@@ -2,6 +2,7 @@ var select;
 var cnv;
 var duck;
 var duckvel = -.75;
+//var happy = false;
 
 var flowerx = [];
 var flowery = [];
@@ -25,6 +26,11 @@ function setup() {
     duck.addAnimation('left', 'the-duck-left.png');
     duck.addAnimation('right', 'the-duck-right.png');
     duck.addAnimation('winter', 'duck-hat.png');
+    duck.addAnimation('left-happy', 'the-duck-left-happy.png');
+    duck.addAnimation('right-happy', 'the-duck-right-happy.png');
+    duck.addAnimation('winter-happy', 'duck-hat-happy.png');
+//    duck.mouseIsOver(happy);
+//    duck.mouseOut(normal);
     
     select = createSelect();
     select.position(5, 5);
@@ -208,4 +214,8 @@ function reset() {
     y = [];
     colornums = [];
     size = [];
+}
+
+function happy() {
+    console.log(duck.animation);
 }
