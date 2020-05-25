@@ -195,13 +195,8 @@ function leaves(colors, num) {
 
 function updateDuck() {
     if (select.value() == 'winter') {
-//        if (happy == true) {
-//            duck.changeAnimation('winter-happy');
-//        } else {
         duck.changeAnimation('winter');
         happy = false;
-//        duckani = 'winter';
-//        }
         duck.position.x = 735;
         duck.position.y = 590;
     } else {
@@ -243,8 +238,4 @@ function reset() {
     } else {
         iswinter = false;
     }
-}
-
-function happy() {
-    console.log("hi");
 }
