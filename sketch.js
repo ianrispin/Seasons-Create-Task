@@ -20,10 +20,11 @@ function setup() {
     cnv.position(0, 0);
     
     duck = createSprite(675, 561);
-    duck.scale = 0.15;
+    duck.scale = 0.2;
     
     duck.addAnimation('left', 'the-duck-left.png');
     duck.addAnimation('right', 'the-duck-right.png');
+    duck.addAnimation('winter', 'duck-hat.png');
     
     select = createSelect();
     select.position(5, 5);
@@ -34,7 +35,6 @@ function setup() {
     select.changed(reset);
     select.style('font-size', '15px');
     select.style('cursor', 'pointer');
-    //select.style('text-align', 'right');
     noStroke();
 }
 
@@ -149,6 +149,11 @@ function winter() {
     //trunk
     stroke('rgba(245, 245, 245, 0.5)');
     branches();
+    //duck
+    duck.changeAnimation('winter');
+    duck.position.x = 735;
+    duck.position.y = 590;
+    drawSprites();
 }
 
 function branches() {
