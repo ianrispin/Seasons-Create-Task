@@ -59,7 +59,7 @@ function draw() {
         winter();
     }
 }
-//main algorithm
+
 function spring() {
     background('skyblue');
     fill('forestgreen');
@@ -125,7 +125,7 @@ function winter() {
     branches();
     updateDuck();
 }
-//sub-algorithm 1
+
 function branches() {
     strokeWeight(14);
     line(135, 515, 135, 605);
@@ -148,7 +148,7 @@ function branches() {
     line(212, 447, 250, 445);
     noStroke();
 }
-//sub-algorithm 2
+
 function leaves(colors) {
     for(i=0; i<1000; i++) {
         x.push(random(15, 265));
@@ -159,7 +159,7 @@ function leaves(colors) {
         ellipse(x[i], y[i], size[i], size[i]);
     }
 }
-//sub-algorithm 3
+
 function updateDuck() {
     if (select.value() == 'winter') {
         duck.changeAnimation('winter');
