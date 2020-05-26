@@ -113,7 +113,7 @@ function fall() {
 }
 
 function winter() {
-    background('darkgrey');
+    background('skyblue');
     fill('snow');
     ellipse(200, 850, 700, 600);
     ellipse(600, 800, 700, 600);
