@@ -71,9 +71,8 @@ function spring() {
     ellipse(600, 585, 222, 45);
     stroke('saddlebrown');
     branches();
-    leaves(blossomcolors, 1000);
+    leaves(blossomcolors);
     updateDuck();
-    drawSprites();
 }
 
 function summer() {
@@ -94,10 +93,8 @@ function summer() {
     ellipse(600, 585, 222, 45);
     stroke('saddlebrown');
     branches();
-    leaves(leafcolors, 1000);
+    leaves(leafcolors);
     updateDuck();
-    duck.velocity.x*=1.5;
-    drawSprites();
 }
 
 function fall() {
@@ -111,9 +108,8 @@ function fall() {
     ellipse(600, 585, 222, 45);
     stroke('saddlebrown');
     branches();
-    leaves(dleafcolors, 1000);
+    leaves(dleafcolors);
     updateDuck();
-    drawSprites();
 }
 
 function winter() {
@@ -128,7 +124,6 @@ function winter() {
     stroke('rgba(245, 245, 245, 0.5)');
     branches();
     updateDuck();
-    drawSprites();
 }
 //sub-algorithm 1
 function branches() {
@@ -154,8 +149,8 @@ function branches() {
     noStroke();
 }
 //sub-algorithm 2
-function leaves(colors, num) {
-    for(i=0; i<num; i++) {
+function leaves(colors) {
+    for(i=0; i<1000; i++) {
         x.push(random(15, 265));
         y.push(random(300, 500));
         colornums.push(Math.floor(Math.random()*6));
@@ -190,6 +185,10 @@ function updateDuck() {
         duck.changeAnimation(duck.getAnimationLabel().slice(0, -6));
         happy = false;
     }
+    if (select.value() == 'summer') {
+        duck.velocity.x*=1.5;
+    }
+    drawSprites();
 }
 
 function reset() {
