@@ -85,7 +85,7 @@ function summer() {
     for(i=0; i<100; i++) {
         flowerx.push(random(0, 800));
         flowery.push(random(500, 800));
-        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {//get() function found on: https://p5js.org/reference/#/p5/get
+        if (get(flowerx[i], flowery[i])[0] === (34 || 255)) {//get() method found on: https://p5js.org/reference/#/p5/get
             ellipse(flowerx[i], flowery[i], 6, 6);
         }
     }
